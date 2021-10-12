@@ -3,6 +3,7 @@ package com.codepath.parsetagram;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 public class ParseApplication extends Application {
 
@@ -10,10 +11,12 @@ public class ParseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        ParseObject.registerSubclass(Post.class);
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("2jSGWFyM7ulMRKYSIQf0DFzIiVJEixYVZl5QbPIo")
-                .clientKey("FxumaQ9t1Lppj8Q4IQj5DU3ece7zVUcECmTPsMrt")
-                .server("https://parseapi.back4app.com")
+                .applicationId(getString(R.string.back4app_app_id))
+                // if defined
+                .clientKey(getString(R.string.back4app_client_key))
+                .server(getString(R.string.back4app_server_url))
                 .build()
         );
     }
